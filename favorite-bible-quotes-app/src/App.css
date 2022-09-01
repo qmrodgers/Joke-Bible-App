@@ -1,0 +1,124 @@
+.App {
+  padding-block: 10vh;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(-45deg, rgba(103,44,142,1), rgb(66, 68, 168), rgb(183, 35, 213), rgb(66, 68, 168));
+  background-size: 400% 400%;
+  animation: gradient-bg 15s ease infinite;
+}
+
+.cool-site-brand {
+  color: hsl(53, 24%, 93%);
+  position: absolute;
+  top: -1vh;
+}
+
+
+@keyframes gradient-bg {
+  0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes opacity-in {
+  from {
+    transform: translateY(-400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes opacity-in-no-movement {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.celeb-image {
+  opacity: 0;
+  aspect-ratio: initial;
+  width: 700px;
+  height: auto;
+  animation-name: opacity-in;
+  animation-duration: 1.5s;
+  animation-delay: 1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.celeb-name {
+  color: hsl(53, 24%, 93%);
+  font-style: italic;
+  opacity: 0;
+  animation-name: opacity-in-no-movement;
+  animation-duration: 1.5s;
+  animation-delay: 3s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.verse-box {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: hsl(53, 24%, 93%);
+
+}
+
+.verse-box > span {
+  font-size: 1.5vw;
+  opacity: 0;
+  text-transform: uppercase;
+  animation-name: opacity-in-no-movement;
+  animation-duration: 1.5s;
+  animation-delay: 4s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+}
+
+.verse-text {
+  font-size: .75vw;
+  opacity: 0;
+  text-transform: uppercase;
+  font-style: italic;
+  animation-name: opacity-in;
+  animation-duration: 1.5s;
+  animation-delay: 5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.verse-origin {
+  margin: 0;
+  opacity: 0;
+  text-transform: uppercase;
+  font-style: italic;
+  animation-name: opacity-in;
+  animation-duration: 1.5s;
+  animation-delay: 6.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
