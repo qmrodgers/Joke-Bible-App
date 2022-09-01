@@ -1,14 +1,3 @@
-CREATE DATABASE celebrity_database;
-USE celebrity_database;
-
-DROP TABLE IF EXISTS celebrities;
-CREATE TABLE celebrities (
-id INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(50) NOT NULL,
-img_src VARCHAR(255) NOT NULL,
-PRIMARY KEY (id)
-);
-
 INSERT INTO celebrities (name, img_src) VALUES ("Greta Thunberg", "gretathunberg");
 INSERT INTO celebrities (name, img_src) VALUES ("Barack Obama", "barackobama");
 INSERT INTO celebrities (name, img_src) VALUES ("Tom Cruise", "tomcruise");
@@ -90,6 +79,3 @@ INSERT INTO celebrities (name, img_src) VALUES ("Carrie Underwood", "carrieunder
 INSERT INTO celebrities (name, img_src) VALUES ("Miley Cyrus", "mileycyrus");
 INSERT INTO celebrities (name, img_src) VALUES ("Dolly Parton", "dollyparton");
 INSERT INTO celebrities (name, img_src) VALUES ("Matthew McConaughey", "matthewmcconaughey");
-
-
-SELECT * FROM celebrities;

@@ -1,7 +1,7 @@
 
 const dbConfig = {
-host: "localhost",
-user: "root",
+host: process.env.SqlHost,
+user: process.env.SqlUsername,
 password: process.env.SqlPassword,
 database: "celebrity_database",
 multipleStatements: false

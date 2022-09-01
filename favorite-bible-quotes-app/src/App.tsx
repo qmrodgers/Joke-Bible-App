@@ -35,7 +35,7 @@ function App() {
         
       });
 
-    fetch('/api/get/celebrity/random', {
+    fetch('https://favorite-bible-quotes-api.herokuapp.com/api/get/celebrity/random', {
       headers: {
       'Content-Type': 'application/json'
     }})
@@ -86,14 +86,14 @@ function App() {
     <div className="App">
 
       <h1 className='celeb-name animated'>{celebData[0]}</h1>
-      <img src={`./images/${celebData[1]}.webp`} alt="hello" className='celeb-image animated'/>
+      <img src={`./images/${celebData[1]}.webp`} alt="Random Celebrity Image" className='celeb-image animated'/>
       <div className="verse-box">
         <span className="">Favorite Bible Verse</span>
         {/*<p className="verse-text">“Happy is the one who seizes your infants and dashes them against the rocks.”</p>*/}
         <p className="verse-text animated">{verseText.current}</p>
         <h3 className="verse-origin animated">{verseOrigin.current}</h3>
       </div>
-        <button className="fetchButton" onClick={() => {setState(!state);}}><span>Next Celebrity</span></button>
+        <button className="fetchButton" onClick={() => {setState(!state)}}>Next Celebrity</button>
     </div>
     <p className="authorCredit">Created by Quaid Rodgers</p>
     </>

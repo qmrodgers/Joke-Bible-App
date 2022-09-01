@@ -1,13 +1,11 @@
 
 //const mysql2 = require('mysql2'),
-      //dotenv = require('dotenv').config({path: '../.env'});
-import { dbConfig } from "./db";
 import mysql2 from "mysql2";
 import { RowDataPacket } from "mysql2";
 import { query } from "express";
 
 
-const connection = mysql2.createConnection(dbConfig);
+const connection = mysql2.createConnection(process.env.JAWSDB_URL as string);
 
 
 connection.connect((err: any) => {
