@@ -4,9 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
+//const cors = require('cors'); enable here and in app.use(cors()) if you need to enable cors policy
 const express_1 = __importDefault(require("express"));
 const db_execute_1 = require("./db/db-execute");
 const app = (0, express_1.default)(), port = 3000;
+//app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World');
 });

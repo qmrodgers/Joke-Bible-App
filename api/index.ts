@@ -1,10 +1,13 @@
 require('dotenv').config();
+//const cors = require('cors'); enable here and in app.use(cors()) if you need to enable cors policy
 import express from "express";
 import { RowDataPacket } from "mysql2";
 import { getCelebrities, getCelebrityById, getCelebrityByName } from "./db/db-execute";
 
 const app = express(),
       port = 3000;
+
+//app.use(cors());
 
 app.get('/', (req: any, res: any) => {
     res.send('Hello World');
