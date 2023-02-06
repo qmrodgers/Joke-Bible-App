@@ -4,3 +4,5 @@
 package.json
 **/.gitignore
 **/.vscode/
+# Local Netlify folder
+.netlify
