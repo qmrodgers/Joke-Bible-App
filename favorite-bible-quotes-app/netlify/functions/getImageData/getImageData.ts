@@ -1,5 +1,5 @@
 import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
-import { getPgSQLClient, Celebrities } from "../../lib/db";
+import { getPgSQLClient, Celebrities } from "../../../lib/db.ts";
 import postgres from 'postgres'
 
 const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
