@@ -1,4 +1,4 @@
-import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
+/* import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 
 const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
   // your server-side functionality
@@ -30,4 +30,4 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
       });
 };
 
-export { handler };
+export { handler }; */
