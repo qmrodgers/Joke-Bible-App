@@ -8,7 +8,7 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
     let data: Celebrities[]; 
     const sql: postgres.Sql<{}> | undefined = getPgSQLClient();
     
-
+    console.log("hi there")
     if (!sql) {
     return {
         statusCode: 500,
@@ -22,11 +22,11 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
 
 
     console.log(data);
-    
+    console.log("hello");
 
     return {
     statusCode: 200,
-    body: data
+    body: "hello"
     }
 
 
