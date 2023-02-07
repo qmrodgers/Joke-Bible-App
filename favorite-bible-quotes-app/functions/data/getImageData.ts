@@ -18,16 +18,20 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
     
     data = await sql<Celebrities[]>`
     SELECT * FROM CELEBRITIES
-    `
+    `;
 
 
     console.log(data);
+    console.log("test");
     
 
     return {
     statusCode: 200,
-    body: data
-    }
+    body: "hello"
+    };
+
+
+
 
 
 };
