@@ -2,7 +2,8 @@
 env.sh
 **/.git
 **/node_modules
-package.json
+package.lock.json
+pnpm-lock.yaml
 **/.gitignore
 **/.vscode/
 # Local Netlify folder
