@@ -10,7 +10,7 @@ export interface Celebrities {
 }
 
 export function getPgSQLClient() { 
-    return process.env.COCKROACH_DB_CONNECTION_STRING ? new Client(process.env.COCKROACH_DB_CONNECTION_STRING) : undefined 
+    return process.env.DATABASE_URL ? new Client(process.env.DATABASE_URL) : undefined 
 }
 
 
