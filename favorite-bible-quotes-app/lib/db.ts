@@ -1,6 +1,6 @@
-import postgres from 'postgres'
 import dotenv from 'dotenv'
-dotenv.config()
+import pg from 'pg'; const {Client} = pg;
+dotenv.config();
 
 export interface Celebrities {
     id: number,
@@ -10,7 +10,7 @@ export interface Celebrities {
 }
 
 export function getPgSQLClient() { 
-    return process.env.COCKROACH_DB_CONNECTION_STRING ? postgres(process.env.COCKROACH_DB_CONNECTION_STRING) : undefined 
+    return process.env.COCKROACH_DB_CONNECTION_STRING ? new Client(process.env.COCKROACH_DB_CONNECTION_STRING) : undefined 
 }
 
 

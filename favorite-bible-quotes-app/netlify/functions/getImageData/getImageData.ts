@@ -1,12 +1,13 @@
 import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
-import { getPgSQLClient, Celebrities } from "../../../lib/db.ts";
-import postgres from 'postgres'
+import { getPgSQLClient, Celebrities } from "../../../lib/db";
+import pg from 'pg'; const { Client } = pg;
+
+
 
 const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
   // your server-side functionality
     //
-    let data: Celebrities[]; 
-    const sql: postgres.Sql<{}> | undefined = getPgSQLClient();
+    const  sql: pg.Client | undefined = getPgSQLClient();
     
     console.log("hi there")
     if (!sql) {
@@ -16,17 +17,16 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
     };    
     }
     
-    data = await sql<Celebrities[]>`
+    let data: pg.QueryResult<Celebrities> = await sql.query(`
     SELECT * FROM CELEBRITIES
-    `
+    `)
 
 
-    console.log(data);
-    console.log("hello");
+   // console.log(data);
 
     return {
     statusCode: 200,
-    body: JSON.stringify({ message: "hello" })
+    body: JSON.stringify(data)
     }
 
 
