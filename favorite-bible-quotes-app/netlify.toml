@@ -1,5 +1,5 @@
 [build]
-command = "sudo apt-get update && sudo apt-get install libpq-dev && pnpm i && pnpm run build" 
+command = "pnpm build" 
 publish = "build/"
 
 [build.environment]
