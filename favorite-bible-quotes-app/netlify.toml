@@ -1,5 +1,5 @@
 [build]
-command = "pnpm build" 
+command = "rm -rf node_modules/ && pnpm build" 
 publish = "build/"
 
 [build.environment]
