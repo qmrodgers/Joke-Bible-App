@@ -112,8 +112,8 @@ function App() {
       <div className="verse-box">
         <span className="">Favorite Bible Verse</span>
         {/*<p className="verse-text">“Happy is the one who seizes your infants and dashes them against the rocks.”</p>*/}
-        <p className="verse-text animated">{bibleText.verse}</p>
-        <h3 className="verse-origin animated">{bibleText.text}</h3>
+        <p className="verse-text animated">{bibleText.text}</p>
+        <h3 className="verse-origin animated">{bibleText.verse}</h3>
       </div>
         <button className="fetchButton" onClick={() => {setState(!state)}}>Next Celebrity</button>
     </div>
