@@ -8,4 +8,4 @@ pnpm-lock.yaml
 **/.vscode/
 # Local Netlify folder
 .netlify
-/build
+*/build
