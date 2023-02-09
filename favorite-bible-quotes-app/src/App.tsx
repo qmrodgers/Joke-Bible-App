@@ -1,53 +1,72 @@
 import * as React from 'react';
-import { useState, useEffect, useRef } from 'react';
-
+import { useState, useEffect, useRef} from 'react';
+import { FisherYatesShuffleArray } from './lib/shuffle'
 
 import './App.css';
 
 function App() {
-  const [bibleText, setBibleText] = useState(['', '']);
-  const [celebData, setCelebData] = useState(['', '']);
+  const [bibleText, setBibleText] = useState({verse: "", text: ""});
+  const [celebData, setCelebData] = useState([{full_name: "", image_url: ""}]);
+  const [celebCountdown, setCelebCountdown] = useState(0);
   const [state, setState] = useState(false);
-  const verseText = useRef('');
-  const verseOrigin = useRef('');
-  const celebrityName = useRef('');
-  const celebrityImgSrc = useRef('');
   const animatedEls = (document.querySelectorAll('.animated') as NodeListOf<HTMLElement> | null);
-
+  
   useEffect(() => {
-    
+        
+        
 
+        if (!celebData || celebData[0].full_name === "") {(async () => {
+            const celebs = fetch('/.netlify/functions/getImageData').then(data => data.json());
+            const bibleQuote = fetch('https://labs.bible.org/api/?passage=random')
+            .then(data => data.text())
+            .then(text => {
+                        const splitText = text.split('/b>'); // Verse and Text come batched together in a single string. Need to separate it'
+                        return {
+                                verse: splitText[0] += '/b>',
+                                text: splitText[1]
+                            };
+                        });
+            await Promise.all([celebs, bibleQuote]).then(data => {
+                setCelebCountdown(data[0].length - 1);
+                setCelebData(data[0]);
+                setBibleText(data[1]);
+                })
+        })();
+        }
+        else if (celebCountdown < 0) { 
+            setCelebData(FisherYatesShuffleArray(celebData));
+            setCelebCountdown(celebData.length - 1);
+            (async () => await fetch('https://labs.bible.org/api/?passage=random')
+            .then(data => data.text())
+            .then(text => {
+                        const splitText = text.split('/b>'); // Verse and Text come batched together in a single string. Need to separate it'
+                        setBibleText( {
+                                verse: splitText[0] += '/b>',
+                                text: splitText[1]
+                            }
+                        ); 
+                        return; }))();
 
-    fetch('https://labs.bible.org/api/?passage=random')
-      .then(response => {
-        return response.text()
-      })
-      .then(text => {
-        //console.log(text);
-        let separatedScripture: string[] = text.split(`/b>`);
-        separatedScripture[0] += `/b>`;
-        setBibleText(prev => separatedScripture);
-        verseText.current = separatedScripture[1];
-        verseOrigin.current = (separatedScripture[0].slice(3, separatedScripture[0].lastIndexOf(`<`)));
+        }
+        else {
+            setCelebCountdown(celebCountdown => celebCountdown - 1);
 
+            (async () => await fetch('https://labs.bible.org/api/?passage=random')
+            .then(data => data.text())
+            .then(text => {
+                        const splitText = text.split('/b>'); // Verse and Text come batched together in a single string. Need to separate it'
+                        setBibleText( {
+                                verse: splitText[0] += '/b>',
+                                text: splitText[1]
+                            }
+                        ); 
+                        return; }))();
+            }
         
 
         
-      });
 
-    fetch('https://favorite-bible-quotes-api.herokuapp.com/api/get/celebrity/random', {
-      headers: {
-      'Content-Type': 'application/json'
-    }})
-    .then(response => response.json())
-    .then(json => {
-      setCelebData([json.name, json.img_src]);
-      //console.log(json.name);
-      //console.log(json);
-
-      
-
-    });
+    }, [state]);
 
 
     /*
@@ -70,7 +89,7 @@ function App() {
 
       
 
-  }, [state])
+
 
 
 
@@ -85,13 +104,13 @@ function App() {
     </div>
     <div className="App">
 
-      <h1 className='celeb-name animated'>{celebData[0]}</h1>
-      <img src={`./images/${celebData[1]}.webp`} alt="Random Celebrity Image" className='celeb-image animated'/>
+      <h1 className='celeb-name animated'>{celebData[celebCountdown].full_name}</h1>
+      <img src={celebData[celebCountdown].image_url} alt="Random Celebrity" className='celeb-image animated'/>
       <div className="verse-box">
         <span className="">Favorite Bible Verse</span>
         {/*<p className="verse-text">“Happy is the one who seizes your infants and dashes them against the rocks.”</p>*/}
-        <p className="verse-text animated">{verseText.current}</p>
-        <h3 className="verse-origin animated">{verseOrigin.current}</h3>
+        <p className="verse-text animated">{bibleText.verse}</p>
+        <h3 className="verse-origin animated">{bibleText.text}</h3>
       </div>
         <button className="fetchButton" onClick={() => {setState(!state)}}>Next Celebrity</button>
     </div>
