@@ -21,8 +21,9 @@ function App() {
             .then(data => data.text())
             .then(text => {
                         const splitText = text.split('/b>'); // Verse and Text come batched together in a single string. Need to separate it'
+                        const regex = /<b>|</ig;
                         return {
-                                verse: splitText[0] += '/b>',
+                                verse: splitText[0].replaceAll(regex, ''),
                                 text: splitText[1]
                             };
                         });
@@ -40,8 +41,9 @@ function App() {
             .then(data => data.text())
             .then(text => {
                         const splitText = text.split('/b>'); // Verse and Text come batched together in a single string. Need to separate it'
+                        const regex = /<b>|</ig;
                         setBibleText( {
-                                verse: splitText[0] += '/b>',
+                                verse: splitText[0].replaceAll(regex, ''),
                                 text: splitText[1]
                             }
                         ); 
@@ -55,8 +57,9 @@ function App() {
             .then(data => data.text())
             .then(text => {
                         const splitText = text.split('/b>'); // Verse and Text come batched together in a single string. Need to separate it'
+                        const regex = /<b>|</;
                         setBibleText( {
-                                verse: splitText[0] += '/b>',
+                                verse: splitText[0].replaceAll(regex, ''),
                                 text: splitText[1]
                             }
                         ); 
