@@ -86,6 +86,44 @@ body {
   flex-direction: column;
 }
 
+.loginbox {
+  z-index: 3;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.479);
+  color: hsl(53, 24%, 93%);
+  height: clamp(40vh, auto, 70vh);
+  width: 20vw;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding-inline: 3vw;
+  padding-block: 2vh;
+  flex-direction: column;
+}
+
+.loginbox a {
+  color: hsl(53, 24%, 93%);
+  text-decoration: none;
+}
+
+.loginbox span {
+display: inline-flex;
+padding: none;
+height: 3em;
+align-items: center;
+justify-content: center;
+}
+
+.loginbox img {
+height: 3em;
+border-radius: 50%;
+outline: 2px solid hsl(53, 24%, 93%);
+
+
+}
+
 .disclaimer-text {
   margin-top: 2vh;
   bottom: 2vh;

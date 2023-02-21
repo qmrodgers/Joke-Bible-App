@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect, useRef} from 'react';
 import { FisherYatesShuffleArray } from './lib/shuffle'
+import UserBar from './components/UserBar';
 
 import './App.css';
 
@@ -98,6 +99,7 @@ function App() {
 
   return (
     <>
+    <UserBar/>
     <div className="fixed-description-container">
       <h3>Everyone loves the Bible, right?!</h3>
       <h3>So do celebrities!</h3>

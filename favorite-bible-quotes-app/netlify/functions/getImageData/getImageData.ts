@@ -10,7 +10,6 @@ const handler: Handler = async (event: HandlerEvent, context: HandlerContext) =>
     //
     const  sql: pg.Client | undefined = getPgSQLClient();
     //console.log(sql);
-    console.log("hi there")
     if (!sql) {
         console.log("exiting");
     return {
