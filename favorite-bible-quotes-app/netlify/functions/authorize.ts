@@ -1,4 +1,3 @@
-import { } from '@netlify/functions'
 import dotenv from 'dotenv'
 import pg from 'pg'
 import * as cookie from 'cookie'

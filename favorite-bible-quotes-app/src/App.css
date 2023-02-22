@@ -87,15 +87,15 @@ body {
 }
 
 .loginbox {
+cursor: pointer;
   z-index: 3;
   box-sizing: border-box;
   position: fixed;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.479);
+  
   color: hsl(53, 24%, 93%);
   height: clamp(40vh, auto, 70vh);
-  width: 20vw;
-  left: 0;
+  left: 3vw;
   display: flex;
   align-items: center;
   padding-inline: 3vw;
@@ -108,12 +108,88 @@ body {
   text-decoration: none;
 }
 
-.loginbox span {
+.loginbox .picturebox {
 display: inline-flex;
 padding: none;
 height: 3em;
 align-items: center;
 justify-content: center;
+}
+
+.loginbox .picturebox span {
+display: inline-flex;
+text-align: center;
+position:relative;
+transform: rotate(90deg);
+line-height: 1;
+margin-left: .5em;
+align-items: center;
+justify-content: center;
+font-size: 200%;
+
+}
+
+.detailsbox {
+max-height:0;
+background-color: none;
+overflow:hidden;
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+margin: 0 auto;
+}
+
+.detailsbox::before {
+content: '';
+clip-path: polygon(50% 0, 100% 100%, 0 100%);
+background-color: rgba(0, 0, 0, 0.479); 
+height: 10px;
+width: 15px;
+left:0;
+right: 0;
+margin: 0 auto;
+position: absolute;
+top: -10px;
+}
+
+.detailsbox > * {
+margin: 0;
+}
+
+.detailsbox > .username {
+width: fit-content;
+white-space: nowrap;
+text-align:center;
+}
+
+.loginbox > .detailsbox > * {
+opacity: 1;
+}
+
+.loginbox.expand > .detailsbox {
+max-height: 200px;
+transition: max-height .25s ease-in;
+overflow: visible;
+padding-block: 1em;
+padding-inline: .6em;
+background-color: rgba(0, 0, 0, 0.479);
+}
+
+.loginbox.expand > .detailsbox > * {
+opacity: 1;
+}
+
+
+.loginbox.expand > .picturebox > span {
+transform: rotate(0deg); 
+top: -15%;
+line-height: 1;
+margin-left: .2em;
 }
 
 .loginbox img {

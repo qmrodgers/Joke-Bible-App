@@ -4,19 +4,16 @@ import type { JWTVerifyResult } from 'jose';
 import { verifyAuth0JWT } from '../lib/auth'
 import axios from 'axios';
 
-// Empty Identity for use in case no id token is available
-const emptyIdentity = {
-protectedHeader: {'alg': 'RS256'}, 
-payload: {
-    'name': 'Log In',            
-    'picture': '',
-    'given_name': 'Log In'
-         }
-    }
-
 function UserBar() {
 
-const [user, setUser] = useState<JWTVerifyResult>(emptyIdentity);
+const toggleVisibility = () => {
+const el = document.querySelector('.loginbox')
+if (el) {
+el.classList.toggle('expand')
+}
+}
+
+const [user, setUser] = useState<JWTVerifyResult | undefined>(undefined);
 
     useEffect(() => {
         
@@ -44,23 +41,23 @@ const [user, setUser] = useState<JWTVerifyResult>(emptyIdentity);
 
 
 
-    if (user.payload['given_name']
+    if (!user) {
+        return (
+        <div className='loginbox'>
+            <a href='/.netlify/functions/login'>Log in</a>
+        </div>
+        )
+    }
 
     return ( 
+        <div className='loginbox' onClick={toggleVisibility}>
+        <p className='picturebox'><img src={user.payload['picture'] as string} alt='User PFP'/><span>&#8964;</span></p>
+        <div className='detailsbox'>
+        <p className='username'>{user.payload['given_name'] as string}</p>
 
 
-            <div className='loginbox'>
-               {(() => {
-                   if (user.payload['given_name'] === 'Log In') {
-                       return (<a href='/.netlify/functions/login'>Log in</a>)
-                       }
-                       return (<span>{`Hello ${user.payload['given_name'] as string}!`} &nbsp; <img src={user.payload['picture'] as string} alt='User Profile Picture'/></span>)
-
-                       }
-                )()} 
-            </div>
-    
-
+        </div>
+        </div>
     );
 
 }
