@@ -1,6 +1,6 @@
-import { Celebrities, type CelebrityData } from './types';
+import { Celebrity, type CelebrityData } from './types';
 
-function HandleCelebrityData(data: CelebrityData): Celebrities[] {
+function HandleCelebrityData(data: CelebrityData): Celebrity[] {
 if (Array.isArray(data)) {
     return data;
 } else {
@@ -8,7 +8,7 @@ return data.rows;
 }
 }
 
-export function FisherYatesShuffleArray(data: CelebrityData): Celebrities[] {
+export function FisherYatesShuffleArray(data: CelebrityData): Celebrity[] {
     data = HandleCelebrityData(data);
     for (let i = data.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -17,7 +17,7 @@ export function FisherYatesShuffleArray(data: CelebrityData): Celebrities[] {
   return data;
 }
 
-export function KnuthShuffleArray(data: CelebrityData): Celebrities[] {
+export function KnuthShuffleArray(data: CelebrityData): Celebrity[] {
     data = HandleCelebrityData(data);
     for (let i = 0; i < data.length; i++) {
     let j = i + Math.floor(Math.random() * (data.length - i));

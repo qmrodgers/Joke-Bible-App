@@ -1,6 +1,6 @@
 import pg from 'pg'
 
-export interface Celebrities {
+export interface Celebrity {
     full_name: string,
     image_url: string
 
@@ -40,5 +40,5 @@ export type Verified_JWT_Object = {
     }
 
 }
-export type CelebrityData = pg.QueryResult<Celebrities> | Celebrities[]
+export type CelebrityData = pg.QueryResult<Celebrity> | Celebrity[]
 export type UserData = pg.QueryResult<Users> | Users[]

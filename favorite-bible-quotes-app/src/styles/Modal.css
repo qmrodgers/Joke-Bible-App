@@ -1,0 +1,57 @@
+.modalWrapper {
+position:absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+margin: auto;
+z-index: 98;
+background-color: #FFFFFFAA;
+}
+
+.modal {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+height: fit-content;
+width: fit-content;
+border-radius: 10px;
+min-width: 300px;
+min-height: 300px;
+padding: 2rem;
+margin: auto auto;
+color: white;
+display: flex;
+flex-direction: column;
+align-items:center;
+text-align:center;
+}
+
+.modal > :is(h1, h2, h3, h4, h5, h6, p) {
+margin: 0;
+}
+
+.modal > h1 {
+margin-bottom: .4em;
+}
+
+.modal > :is(h2, h3, h4, h5, h6) {
+margin-bottom: .8em;
+}
+
+.modal > p {
+margin-bottom: 1em;
+}
+
+.modal > a {
+position: absolute;
+bottom: 1em;
+}
+
+.x {
+
+}
+
+

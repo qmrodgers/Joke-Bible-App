@@ -22,7 +22,7 @@ export async function getImageData(client: pg.Client): Promise<CelebrityData> {
         client.end();
         
         data = KnuthShuffleArray(data);
-
+            
         return data;
 
 }

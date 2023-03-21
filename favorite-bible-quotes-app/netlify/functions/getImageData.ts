@@ -1,7 +1,7 @@
 import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
-import { getPgSQLClient} from "../../../src/lib/db";
-import { type CelebrityData } from "../../../src/lib//types";
-import { KnuthShuffleArray } from "../../../src/lib/shuffle"
+import { getPgSQLClient} from "../../src/lib/db";
+import { type CelebrityData } from "../../src/lib//types";
+import { KnuthShuffleArray } from "../../src/lib/shuffle"
 import pg from 'pg'; 
 
 

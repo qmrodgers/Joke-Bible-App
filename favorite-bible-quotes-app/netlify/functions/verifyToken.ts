@@ -14,8 +14,8 @@ const cookies = event['headers']['cookie'] ?? undefined;
 if (!cookies) {
 console.error('No cookies');
 return {
-statusCode: 401,
-body: 'unable to verify token'
+statusCode: 200,
+body: JSON.stringify(undefined)
 }}
 
 
@@ -23,8 +23,8 @@ const id_token = cookie.parse(cookies)['id_token'] ?? undefined;
 if (!id_token) {
 console.error('No id_token');
 return {
-statusCode: 401,
-body: 'unable to verify token'
+statusCode: 200,
+body: JSON.stringify(undefined)
 }}
 
 
@@ -33,8 +33,8 @@ const jwt_content = await verifyAuth0JWT(id_token);
 if (!jwt_content) {
 console.error('unable to verify token');
 return {
-    statusCode: 401,
-    body: 'Unable to verify token'
+    statusCode: 200,
+    body: JSON.stringify(undefined)
 }
 }
 
