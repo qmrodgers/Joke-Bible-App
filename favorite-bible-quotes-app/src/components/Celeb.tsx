@@ -77,7 +77,9 @@ export function Celeb() {
       console.log('running next celeb data')
           if (!celebSet.current) { console.log('no celeb set'); return false;}
       console.log(`setting celebrity ${celebSet.current[0].celebrity.full_name}`)
-      if (currentCeleb?.celebrity.image_url) URL.revokeObjectURL(currentCeleb?.celebrity.image_url);
+      console.log(currentCeleb?.celebrity.image_url);
+      
+      if (currentCeleb?.celebrity.image_url) { console.log('revoke'); URL.revokeObjectURL(currentCeleb?.celebrity.image_url); }
       setCurrentCeleb(celebSet.current[0]);
       iterateCelebritySet();
       return true;
